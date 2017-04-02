@@ -1,0 +1,403 @@
+\documentclass[bigtut]{quiz}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\unitcode{MATH1005}
+        \unitname{Statistics}
+        \semester{Winter}
+        \sheetnumber1
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\lettersfirst
+
+\begin{tutorial}
+
+{\bf Aim of Course}  \\
+To develop foundational statistical literacy which can be transferred to any discipline: \\
+how to understand data (Part1), how data arises from populations (Part2), and how to use data to test hypotheses (Part3).  \\ \\
+
+
+{\small \begin{tabular}{|l|l|l|l|} \hline
+{\bf Day} & {\bf Lecture (3-5pm)} \hspace{4cm} & {\bf Tutorial Labs (5-7pm)} \hspace{.4cm} & {\bf Assessment} \hspace{.2cm} \\ \hline
+& & &  \\
+{\bf Preparation} & Please pre-read Lecture Notes 1. EDA.  &  Please complete Intro to R  & \\ 
+& & & \\ \hline
+1  & {\bf 1. Exploratory Data Analysis (EDA)} &   & \\
+M 27/6 & Topic1: Data and Graphical Summaries & Topic1: Graphical Summaries  & \\
+& Topic2: Numerical Summaries & Topic2: Numerical Summaries & \\ 
+& & & \\ \hline
+2 &  & & \\
+W 29/6 & Topic3: Bivariate Data & Topic3: Bivariate Data   & \\
+& &  & \\ 
+& & & \\ \hline
+3 & {\bf 2. Probability and Distribution Theory} &    &  \\
+F 1/7 & Topic4: Probability, Random Variables  & Topic4: Probability,  Random Variables  &   \\
+& and Distributions & and Distributions &  \\ 
+& & & \\ \hline
+4 &   &  &      \\
+M 4/7 & Topic5: Discrete Random Variables  & Topic5: Discrete Random Variables  & Report1 10\%    \\ 
+& & & Quiz1 5\% \\ 
+& & &  \\ \hline
+5 &   &  & \\
+W 6/7 & Topic6: Continuous Random Variables & Topic6:  Continuous Random Variables  & \\ 
+& &  & \\ 
+&  & & \\ \hline
+6 &   &   & \\
+F 8/7 & Topic7: Combinations of Random Variables  & Topic7: Combinations of Random Variables &  \\ 
+& &  & \\ 
+& & & \\ \hline
+7 & {\bf 3. Hypothesis Testing} & &   \\
+M 11/7 & Please Pre-read Topic8: Hypothesis Testing   & Topic8: Hypothesis Testing    & Report2 5\%    \\ 
+&  Topic9: Test for Proportion    & Topic9: Test for Proportion  & Quiz2 5\%  \\ 
+& & & \\ \hline
+8 &    &  &  \\
+W 13/7 & Topic10: Tests for Means & Topic10: Tests for Means &  \\ 
+& & &  \\ 
+& & & \\ \hline
+9 &  &     &  \\
+F 15/7 & Topic11: Test for Goodness of Fit  & Topic11: Test for Goodness of Fit   &   \\ 
+& &  & \\ 
+& & & \\ \hline
+10 &  &  &   \\
+M 18/7 &  Topic12: Confidence Intervals  &  Topic12: Confidence Intervals & Report3 5\%  \\   
+& &   & Quiz3 5\%  \\ 
+& &  & \\  \hline
+11 & Summary Lecture (9-11am)  & &  \\
+W 20/7 & Consultations (11am-1pm) &  &  \\ 
+& & &  \\ \hline
+Exam  &   12:50-2:30pm (TBC) &  & 65\%   \\
+ F 22/7  & &  &  \\
+& & & \\ \hline
+\end{tabular} }
+
+\newpage
+{\bf Aim of Quizzes} \\
+The Quizzes test basic statistical skills.   
+
+{\small \begin{tabular}{|l|l|} \hline  
+& \\ 
+ {\bf Quiz Content} \hspace{1cm} & {\bf Complete in Tute}  \\  [2ex]  \hline 
+ & \\ 
+ {\bf Quiz1}  5\%  &  4/7 \\
+Basic skills in Part 1: summation notation, numerical and graphical  summaries, and bivariate data. &   \\
+&    \\ [2ex]  \hline 
+& \\ 
+ {\bf Quiz2} 5\% &  11/7  \\
+Basic skills in Part2: probability, random variables, distributions and the CLT. &   \\
+  &  \\  [2ex]   \hline 
+  & \\  
+{\bf Quiz3} 5\% & 18/7 \\
+Basic skills in Part3: calculating test statistics and p-values for hypothesis tests (excluding Topic 12). &    \\
+    &   \\  [2ex]   \hline 
+\end{tabular} }
+
+\vspace{.5cm}
+{\bf Quiz Instructions}
+\begin{itemize}
+\item Each Quiz consist of 5 short questions requiring a numerical answer. \\
+\item If the answer requires rounding, use up to 2dp.  \\
+\item Use both hand working and R to doublecheck your calculations. \\ 
+\item Quizzes are completed in the first 20 minutes of your designated tutorial class.  \\ 
+\item You may use a calculator and refer to the MATH1005 website but not have any hard copies of notes.  \\
+\item To prepare, work through the practise questions and revise the relevant lectures and tutes. \\
+\item The better mark principle automatically applies to the Quizzes and Stats Reports.  If any assessment task is not completed (whether due to sickness or own choice), then the proportion of marks for that task is added to the exam. For example, if Quiz1 is not completed, then the exam will count for 70\% (rather than 65\%).
+\end{itemize}
+
+\newpage
+{\bf Stats Reports} \\
+The Stats Reports test statistical literacy and communication.   \\
+
+
+{\small \begin{tabular}{|l|l|} \hline  
+& \\ 
+ {\bf Report Content} \hspace{1cm} & {\bf Due Date}  \\  [2ex]  \hline 
+ & \\ 
+{\bf Report1}  10\%   \hspace{.1cm} (Written Report 7\% + Verbal Report 3\%) & 4/7 1pm: Submit PDF of Verbal Report through Turnitin   \\
+Investigate your own data and present a short talk to your class. &    \\
+& 4/7  1pm: Submit PDF of Written Report through Turnitin    \\
+Report1 is designed to give you experience with analysing data   &      \\ 
+of your choice to illustrate the transfer of Statistics to any discipline. & 4/7 5pm: Present Verbal Report in Tute class   \\
+&      \\  [2ex]  \hline 
+ & \\  
+ {\bf Report2} 5\% & 11/7 1pm: Submit PDF of Written Report through Turnitin \\  
+ Investigate the use of statistics in the media.  &    \\ [2ex]   \hline 
+ & \\  
+ {\bf Report3} 5\% & 18/7 1pm: Submit PDF of Written Report through Turnitin \\ 
+Investigate the use of statistics in a given research paper.  &    \\
+  & \\   [2ex]   \hline 
+\end{tabular} }
+
+\vspace{.5cm}
+{\bf Report Instructions}
+\begin{itemize}
+\item Reports can be submitted individually or by a pair of students. This helps to develop the skill of collaboration and usually improves the result. \\
+\item If you choose to work in a pair, then both students must submit the same PDFs throught Turnitin, (for both the Verbal and Written Reports). If the Verbal Report is presented as a pair, then both students must be part of the presentation (whether speaking or operating the slides).  \\
+\item The page limit for each Report must be followed exactly, as any extra pages will not be marked by the tutors. You may create your own word document of the Templates, but they must remain on 1 A4 page, and the final work must be exported as a PDF.  \\
+\item Reports must be submitted as a PDF through Turnitin - no other form of document will be marked (eg .docx, Pages).
+\end{itemize}
+
+
+ 
+{\bf FAQ on Report1} 
+
+{\bf Can I use Excel rather than R?} \\
+No. These Reports are designed to increase your proficiency in R. 
+
+{\bf Where do I put my R output?} \\
+Attach your R code to the Template and save as a PDF. Only include the relevant R output within the Report Template.
+
+{\bf What size data set should I use?} \\
+Pick something that is interesting to you, ideally something related to your Major, or potential field of career.  Often a larger data set is more interesting, but dealing with small data sets is also an important skill. 
+
+{\bf Can I bring my PDF of the Verbal Report on a USB to the Tute class?} \\
+No. You can only the PDF of the Verbal Report submitted through Turnitin.
+
+{\bf Do I have to use a PDF for my Verbal Report?} \\
+No, but a PDF is usually very useful. Alternatively you could present a poster or use the whiteboards.
+
+{\bf Does the content of my Verbal Report have to be the same as the Written Report?} \\
+No. Include whatever will be interesting for your class.
+
+{\bf What length should my presentation be?} \\
+Whatever is interesting for the class. You will get a warning at 2 minutes, and a strict maximum of 3 minutes.
+
+{\bf How is the Verbal Report marked?} \\
+1 mark: Student presents the Report with PDF (or another method: eg poster, whiteboards). \\
+1 mark: Student explains an appropriate presentation of the data. \\
+1 mark: Student explain the motivation for the Report (eg impact or usefulness).
+
+{\bf Does each peson in the pair submit separately?} \\
+You will both need to  submit the same PDFs of the Verbal and Written Reports through Turnitin. P
+
+
+\newpage
+\fbox{ {\bf Stats Report1: Exploratory Data Analysis} }   {\tiny \bf  Submit this 1 Page Template, plus the data and R Code attached.}
+
+\begin{tabular}{|l|l|r|} \hline
+{\bf Analysis} & {\bf Details} \hspace{11cm} & {\bf Mark} \\ \hline
+Data & {\tiny What is your data? (Eg 2016 road fatalities in Australia)} & 1  \\
+& & \\ 
+Source & {\tiny Where did you find your data? (Eg Provide the url.) Attach your data.} &  \\ 
+& & \\ 
+Integrity &  {\tiny Give 1 reason that you trust its integrity.} &   \\ 
+& & \\ \hline
+Numerical  & {\tiny Present both a location and spread summary from R. What do they tell you about the data?}  & 3 \\ 
+Summaries & & \\ 
+& & \\ 
+& & \\ 
+& & \\
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\  
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\
+& & \\ \hline
+Graphical & {\tiny Present an appropriate summary from R. What does it tell you about the data?}  & 2 \\ 
+Summary & & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\
+& & \\ \hline
+Usefulness & {\tiny Who might benefit from this analysis?} & 1 \\
+& & \\
+Research & {\tiny What is a question that could be investigated by further data analysis?} &  \\
+& & \\
+R Code & {\tiny Attach the R Code.} &  \\ 
+& & \\ \hline
+Communication & {\tiny Report with data presentation and motivation  (max 3mins).} & 3 \\ 
+& & \\ \hline
+Total & &  \\ 
+& & /10 \\ \hline
+\end{tabular}
+
+\newpage
+\fbox{ {\bf Stats Report 2: Statistics in the Media} }  {\tiny \bf  Submit this 1 Page Template, plus the Article attached.}
+
+\begin{tabular}{|l|l|r|} \hline
+{\bf Analysis} & {\bf Details} \hspace{11cm} & {\bf Mark} \\ \hline
+Article & {\tiny What is the title and author of the article?} & 1  \\
+& & \\ 
+Source & {\tiny Where did you find the article? (Eg Provide the url.) Attach the article, with the relevant sections highlighted.} \hspace{.5cm} &  \\ 
+& & \\ 
+Integrity &  {\tiny Give 1 reason that you do or don't trust its integrity.} &   \\ 
+& & \\ \hline
+Summary & {\tiny How was statistics used in this article? For what purpose? Does the use of statistics support the author's conclusion?} & 3 \\
+&  & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\  
+& & \\ 
+& & \\ 
+& & \\  
+& & \\
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\\hline
+Research & {\tiny What is a question that could be investigated by further data analysis?} & 1 \\
+& & \\
+& & \\
+& & \\ \hline
+Total & &  \\ 
+& & /5 \\ \hline
+\end{tabular}
+
+\newpage
+\fbox{ {\bf Stats Report3 - Statistics in Research} }  {\tiny \bf  Submit this 1 Page Template.}
+
+\begin{tabular}{|l|l|r|} \hline
+{\bf Analysis} & {\bf Details} \hspace{11cm} & {\bf Mark} \\ \hline
+Article & {\tiny Choose 1 of the given articles. List the title and author of the article and the journal reference.} &   \\
+& & \\
+& & \\ 
+& & \\  \hline
+Purpose & {\tiny What research question is being investigated?} & 1 \\
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ \hline
+Summary & {\tiny How was statistics used in this article, and for what purpose?} & 2 \\
+& & \\ 
+& & \\ 
+& & \\
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\
+& & \\ 
+& & \\ 
+& & \\
+& & \\
+& & \\\hline
+Conclusion & {\tiny In your own words in 1 sentence, explain the conclusion of the article. Who would it be useful for?} & 1 \\
+& & \\ 
+& & \\
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\ 
+& & \\
+& & \\
+& & \\ \hline
+Research & {\tiny What is a question that could be investigated by further data analysis?} & 1 \\
+&  &  \\ 
+& & \\
+& & \\ 
+& & \\ \hline
+Total & &  \\ 
+& & /5 \\ \hline
+\end{tabular}
+
+
+
+
+
+\end{tutorial}
+\end{document}
+
