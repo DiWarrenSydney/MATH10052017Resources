@@ -1,0 +1,1195 @@
+\documentclass[bigtut]{tutorial}
+%\usepackage[margin=1cm]{geometry}
+\unitcode{MATH1005}
+        \unitname{Statistics}
+        \semester{Semester 2}
+        \sheetnumber1
+\withsolutions
+
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{Sweave}
+\usepackage{booktabs}
+\usepackage{enumerate}
+\begin{document}
+\lettersfirst
+
+\def\var{\textsl{Var}}
+
+\begin{tutorial}%
+
+\fbox{Numerical and Graphical Summaries }
+
+\begin{questions}
+
+\question
+ The following table gives the number of ice creams sold in a coffee shop
+    on each day in January 2002 in a Canadian city:
+    \begin{center}
+                                    \begin{tabular}{llllllll}
+                                            2&0&0&1&1&0&2&1\\
+                                            3&3&6&7&0&4&1&0\\
+                                            1&1&3&2&1&0&8&0\\
+                                            0&4&5&1&0&2&3&
+                                    \end{tabular}
+                            \end{center}
+What is the median? 
+
+\begin{parts}[5]
+                        \part 0.0
+                        \part 1.0
+                        \part 2.0
+                        \part 3.0
+                        \part none of the above.
+                        \end{parts}
+
+\begin{solution}
+There are 31 observations, so when arranged in ascending order, the median is the unique middle value: $x_{(16)}$. As the 9 smallest values are all 0 and the 10th-smallest to the 17th-smallest are all 1, $\tilde{x} = x_{(16)} = 1$. (b).
+\end{solution}
+
+ \question
+The  mean number of ice creams sold by the shop in Q1 is:
+
+\begin{parts}[5]
+                        \part 4.1
+                        \part 0.9
+                        \part 5.0
+                        \part 2.0
+                        \part 0.0.
+                        \end{parts}
+\begin{solution}
+$\bar{x} = \frac{ 9\times 0 + 8\times 1 +  4 \times 2 + 4 \times 3 + 8 + 5 + 6+7+8}{31}=\frac{62}{31}=2$. (d).
+\end{solution}
+
+
+
+ \question
+ From a set of 8 values $x_1,\ldots,x_8$ we have  \ $\sum_{i=1}^{8} x_i = 427$ and
+$\sum_{i=1}^{8} x_i^2 = 22805.$ The mean and variance of these 8 values is (2dp):
+\begin{parts}[5]
+                        \part 53.38 and 1.19
+                        \part 53.38 and 1.41
+                        \part 53.40 and 1.41
+                        \part 53.38 and 1.98
+                        \part none of the above.
+                        \end{parts}
+
+\begin{solution}
+The mean is $\bar{x}=  \frac{1}{n}\sum_{i=1}^n x_i = \frac{1}{8}\times 427 = 53.375$. \\
+
+The variance is $s^2_x = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar x)^2 = \frac{1}{n-1} (  \sum_{i=1}^{n} x_i^{2}  - \frac{(\sum x_i)^2}{n} ) =  \frac{1}{8-1}\left[ 22805 - \frac{(427)^2}{8} \right] = 1.98 \;\text{(2dp)}$ (d).
+
+\end{solution}
+
+
+
+ \question
+ The following stem-leaf gives examination results as integers out of 100.
+\begin{verbatim}
+  3 | 8
+  4 | 0468
+  5 | 235568
+  6 | 0145588
+  7 | 11445
+  8 | 3
+ \end{verbatim}
+
+The mean of this sample is (2dp):
+    \begin{parts}[5]
+                        \part 60.17
+                        \part 43.24
+                        \part 58.85
+                        \part 97.24
+                        \part cannot calculate.
+                        \end{parts}
+\begin{solution}
+The sum of the values $\{ x_{i} \}$ can be computed
+\begin{itemize}
+\item directly: by writing out the data in full. $\sum_{i=1}^{24}  x_{i}= 38+40+44+\ldots+57+83 = 1444$
+\item exploiting the stem-and-leaf-display:
+\begin{eqnarray*}
+\sum_{i=1}^{24}  x_{i} &=& 38 \\
+& & + (0+4+6+8) + 4 \times 40 \\
+& & + (2+3+5+5+6+8) + 6 \times 50 \\
+& & + \ldots\\
+&=& 1444
+\end{eqnarray*}
+\end{itemize}
+Hence the mean is $\bar{x} = 1444/24 = 60.17$ (2dp) (a).
+
+\end{solution}
+
+
+
+
+ \question
+Given the following bivariate data
+ \begin{center}
+                                                    \begin{tabular}{|l|lllll|}
+                                                    \hline
+                                                            $i$&1&2&3&4&5\\
+                                                            \hline
+                                                            $x_i$&1&6&8&3&5\\
+                                                            \hline
+                                                           $ y_i$&3&1&7&4&2\\
+                                                   \hline
+                                                    \end{tabular}
+                                            \end{center}
+the value of $S_{xy} $ is:
+   
+                    \begin{parts}[5]
+                            \part 87
+                            \part 78.2
+                            \part 304
+                            \part 5
+                            \part 8.8.
+                            \end{parts}
+             
+
+
+               
+ \begin{solution}
+
+$S_{xy} =  \sum_{i=1}^{5} x_i y_i - \frac{1}{5} \left( \sum_{i=1}^{5} x_i \right) \left( \sum_{i=1}^{5} y_i \right) 
+=  87 -  \frac{1}{5} (23 \times 17) = 8.8$ (e).
+                            \end{solution}
+   
+    
+
+\question
+For a set of 12 pairs of observations $(x,y)$, the following summaries were obtained:\\
+$\sum_{i}^{12} x_{i} = 25,   \sum_{i}^{12} y_{i} = 432, \sum_{i}^{12} x_{i}^2 = 59, \sum_{i}^{12} y_{i}^2 = 15648, \sum_{i}^{12} x_{i} y_{i} = 880.5$. \\
+The values of $S_{xx}, S_{yy}$ and $S_{xy}$ are (respectively):
+\begin{parts}[3]
+                            \part 6.92, 15648, and 880.5
+                            \part 6.92, 96, and 880.5
+                            \part 6.92, 96, and -19.5
+                            \part -19.5, 96, and 880.5
+                            \part none of the above.
+ \end{parts}
+    
+ \begin{solution}
+    $S_{xy} = \sum_{i=1}^n x_iy_i - \frac{(\sum x_i)(\sum y_i)}{n} = 880.5-\frac{(25)(432)}{12} = -19.5.$ \\
+    From here we see the only possible correct answer is (c).
+    
+    \smallskip
+    For the benefit of later questions we compute the other two quantities as well:\\
+    $S_{xx} = \sum_{i=1}^n x_i^2 - \frac{(\sum x_i)^2}{n} = 59-\frac{(25)^2}{12} = 6.91667.$ \\
+    $S_{yy} = \sum_{i=1}^n y_i^2 - \frac{(\sum y_i)^2}{n} = 15648-\frac{(432)^2}{12} = 96.$
+    
+    \end{solution}
+    
+    
+ \question 
+The sample correlation  coefficient between $x$ and $y$ in the previous question is (2dp):
+    \begin{parts}[5]
+                            \part 7.57
+                            \part -7.57
+                            \part -0.08
+                            \part-0.76
+                            \part 1.00.
+     \end{parts}
+    
+ \begin{solution}
+The correlation coefficient is $r = \frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}} = \frac{-19.5}{\sqrt{(6.917)(96)}} = -0.757$ (d).
+    \end{solution}
+    
+    
+  \question 
+The predicted value of $y$ at $x=5$ from the least squares regression line in the previous question is (2dp):
+     \begin{parts}[5]
+                            \part 27.77
+                            \part 47.77
+                            \part 41.87
+                            \part 55.97
+                            \part can not calculate.
+     \end{parts}
+    \begin{solution}
+    The slope of the least-squares line is: $b = \frac{S_{xy}}{S_{xx}} = \frac{-19.5}{6.91667} = -2.82$  (2dp). \\
+    The intercept is: $a=\bar y - b \bar x = 432/12 - (-2.82) \times 25/12= 41.8735$. \\
+Hence the LSR line is: $\hat{y} =  41.8735 - 2.82x$. \\
+Substituting $x=5$, we get  $\hat{y}=41.8735 - 2.82(5) \approx 27.77$.
+    \end{solution}
+ 
+   
+\question 
+ The first quartile $Q_1$ of the 10 observations $\{ 5, 3, 4, 6, 0, 2, 2, 2, 1, 7 \}$ is closest to
+   \begin{parts}[5]
+                            \part 4.5
+                            \part 2.0
+                            \part 1.5
+                            \part 2.5
+                            \part none of the above.
+\end{parts}
+
+\begin{solution}
+Sorted data:$\{ x_{(i)} \} =  \{ 0,1,2,2,2,3,4,5,6,7 \}$. \\
+$Q_{1} = \frac{ x_{(\lceil \frac{10}{4}  \rceil  )} + x_{( \lfloor\frac{10}{4} +1  \rfloor )} }{2} = \frac{ x_{(3)} + x_{(3)} }{2} = x_{(3)} = 2$ (b). \\
+\end{solution}
+
+\question
+For the 10 observations in the previous question, the mean is closest to
+ \begin{parts}[5]
+                            \part 2.5
+                            \part 3.0
+                            \part 4.0
+                            \part 2.0
+                            \part 3.2
+\end{parts}
+\begin{solution}
+$\bar{x} = \frac{1}{10} \sum_{i=1}^{10} x_{i}  = \frac{32}{10} = 3.2$ (e).
+\end{solution}
+
+\question 
+Consider the following stem and leaf diagram, where 0 |0 represents 0.0: 
+\begin{verbatim}
+0 | 00246
+1 |1258 
+2 |12379 
+3|
+4|
+5 |0
+\end{verbatim} 
+
+The interquartile range (IQR) is 
+\begin{parts}[5]
+                            \part 1.8
+                            \part 1.9
+                            \part 2.0
+                            \part 2.1
+                            \part 2.2
+\end{parts}
+
+\begin{solution}
+$Q_{1} = \frac{ x_{(\lceil \frac{15}{4}  \rceil  )} + x_{( \lfloor\frac{15}{4} +1  \rfloor )} }{2} = \frac{ x_{(4)} + x_{(4)} }{2} = x_{(4)} = 0.4$. \\
+$Q_{3} = \frac{x_{ ( \lceil   \frac{3 \times 15}{4})  \rceil  )} + x_{ (\lfloor \frac{3 \times 15}{4} +1  \rfloor )} }{2} = \frac{ x_{(12)} + x_{(12)} }{2} = x_{(12)} = 2.3$ \\
+$IQR = 2.3-0.4= 1.9$ (b).
+\end{solution}
+
+\question
+For the 15 observations in the previous question, the number of outliers is 
+\begin{parts}[5]
+                            \part 0
+                            \part 1
+                            \part 2
+                            \part 3
+                            \part 4
+\end{parts}
+
+\begin{solution}
+Lower threshold: $LT = Q_{1} - 1.5 IQR = 0.4 - 1.5 \times 1.9 = -2.45$. \\
+Upper threshold: $UT = Q_{3} + 1.5 IQR = 2.3 + 1.5 \times 1.9 = 5.15$. \\
+Hence there are no lower outliers and 0 upper outliers, giving (a).
+\end{solution}
+
+\question
+A correlation coefficient of $r=-0.99$ is reported for a sample of pairs $(x_{i}, y_{i})$
+Without any further information this implies:
+
+\begin{parts}
+\part the points $(x_i,y_i)$ are scattered about a straight line of slope 0.99.
+\part with a probability of 99\% the relationship between $x$ and $y$ is best described with a straight line. 
+\part the points $(x_{i},y_{i})$ lie on a straight line with slope -0.99.
+\part the relationship between $x$ and $y$ is more likely to be non linear.
+\part the straight line of best least-squares fit has negative slope.
+\end{parts}
+
+
+\begin{solution}
+(e)
+\end{solution}
+
+\question 
+For a sample $x_1,x_2,\ldots,x_{18}$ we have $\sum_{i=1}^{18} x_{i} = 91$ and $\sum_{i=1}^{18} x_{i}^2 = 799$.
+To 1dp, the sample standard $s_{x}$ is 
+\begin{parts}[5]
+                            \part 20.0
+                            \part 19.9
+                            \part 4.5
+                            \part 2.2
+                            \part 4
+\end{parts}
+\begin{solution}
+$s = \sqrt{ \frac{1}{n-1} ( \sum_{i=1}^n x_i^2 - \frac{1}{n}\sum_{i=1}^{n} x_i^2) } =  \sqrt{ \frac{1}{17} (799-\frac{1}{18} (91)^2) } \approx 4.5$ (c).
+\end{solution}
+
+
+
+\question
+The following table shows the age ($x$, in years) and height ($y$, in cm) of 10 childen:
+\begin{center}
+\begin{tabular}{l | llllllllll} 
+Age $x$ & 9 & 11 & 12 & 11 & 9 & 11 & 10 & 13 & 10 & 11 \\ \hline
+Height $y$ & 113 & 135 & 146 & 129 & 113 & 132 & 127 & 155 & 128 & 131 \\
+\end{tabular}
+\end{center}
+with \\
+$\sum_{i=1}^{10} x_{i} = 107, \sum_{i=1}^{10} y_{i} = 1309, \sum_{i=1}^{10} x_{i} y_{i} = 14148, S_{xx} = 14.1, S_{yy} = 1494.9$. \\
+Performing a linear regression of $y$ on $x$, the intercept $a$ and the slope $b$ (to 1dp) are respectively:
+\begin{parts}[5]
+                            \part 10.0; 23.4
+                            \part 23.4; 12.1
+                            \part 23.4; 10.0
+                            \part 10.0; 25.4
+                            \part none of the above
+\end{parts}
+  \begin{solution}
+  $S_{xy} = 14148 -\frac{1}{10} 107 \times 1309 = 141.7$. \\
+$b = \frac{ S_{xy} }{ S_{xx} } = \frac{ 141.7}{14.1} \approx 10.04965$. \\
+$a = \bar{y} - b \bar{x} = \frac{1309}{10} - (10.04965)\frac{107}{10} \approx 23.36875$. \\
+So $(a,b)$ = answer (c).
+\end{solution}
+
+
+\vspace{1cm}
+\hspace{-1cm}
+\fbox{Probability and Distributions}
+
+\question
+The success probability of a new strategy is 0.8. Use tables to find the probability of more than 6 successes in 12 independent repetitions of applying the new strategy.
+
+\begin{parts}[5]
+                            \part 0.0039
+                            \part 0.9961
+                            \part 0.0194
+                            \part 0.9806
+                            \part none of the above
+\end{parts}
+\begin{solution}
+Let $X$ = number of successes in 12 independent repetitions $\sim B(n=12,p=0.8)$. \\
+$P(X > 6) = 1- P(X \leq 6) = 1 - 0.0194 = 0.9806$ (using Binomial tables), answer (d). \\
+
+Note: To answer this with tables with values $p \leq 0.5$, we swap it around as follows. \\
+Let $X$ = number of failures in 12 independent repetitions $\sim B(n=12,p=0.2)$. \\
+More than 6 successes = 5 or less failures (7 successes = 5 failures, 8 successes = 4 failures etc) \\
+$P(X \leq 5) = 0.9806$ (using Binomial tables), answer (d). \\
+
+Check:
+\begin{verbatim}
+> 1-pbinom(6,12,0.8)
+[1] 0.9805947
+> pbinom(5,12,0.2)
+[1] 0.9805947
+\end{verbatim}
+
+
+
+\end{solution}
+
+\question
+Two doping tests are available, test A and test B. If it is known that a certain blood sample was taken from a doped athlete then test A detects it with probability 0.5 and test B detects it with probability 0.45 whereas the probability that both tests simultaneously detect it is 0.4. What is the probability that neither of the tests detects that the blood sample is suspicious?
+
+\begin{parts}[5]
+                            \part 0.55
+                            \part 0.4
+                            \part 0.45
+                            \part 0.6
+                            \part 0.7
+\end{parts}
+\begin{solution}
+$P(A \mbox{ detects}) = 0.5, P(B \mbox{ detects}) = 0.45, P(A \cap B) = 0.4$. \\
+$P(\mbox{neither detects)} = 1- P(\mbox{at least 1 detects}) = 1- P(A \cup B) =  1 - ( P(A) + P(B) - P(A \cap B)) = 1- (0.5 + 0.45 - 0.4) = 0.45$ (c). \\
+Alternatively: draw a Venn diagram to visualise.
+\end{solution}
+
+
+\question
+The random variable $X$ is described by the following probabilities. \\
+\begin{center}
+\begin{tabular}{l | llll}
+$i$ &  0 & 1 & 3 & 4 \\ \hline
+$P(X=i) = p_{i}$ & 0.5 &  0.4  & 0.05  & 0.05 \\
+\end{tabular}
+\end{center}
+
+What is the expected value of X?
+
+\begin{parts}[5]
+                            \part 0.55
+                            \part 0.4
+                            \part 0.45
+                            \part 0.75
+                            \part 0.7
+\end{parts}
+
+\begin{solution}
+$E(X) = \sum_{i} x P(X=x) = 0 \times 0.5 + 1 \times 0.4 + 3 \times 0.05 + 4 \times 0.05 = 0.75$ (d).
+\end{solution}
+
+
+
+\question
+For the random variable in the previous question, what is the expected value of $X^3$? 
+
+\begin{parts}[5]
+                            \part 0.81
+                            \part 6.90
+                            \part 2.25
+                            \part 0.42
+                            \part 4.95
+\end{parts}
+\begin{solution}
+$E(X^3) = \sum_{i} x^3 P(X=x) = 0^3 \times 0.5 + 1^3 \times 0.4 + 3^3 \times 0.05 + 4^3 \times 0.05 = 4.95$ (e).
+\end{solution}
+
+\question
+Suppose that $X$ is the number of Heads obtained in 12 independent tosses of a coin, for which a Head is twice likely as a Tail. The expected value of X is
+
+\begin{parts}[5]
+                            \part 9
+                            \part 7.5
+                            \part 9.6
+                            \part 8
+                            \part 7
+\end{parts}
+\begin{solution}
+Let $p = P(H)$. \\
+Given: $P(H) = 2 \times P(T) = 2 \times (1-P(H))$, hence $3P(H) = 2$, giving $P(H)=\frac{3}{3}$. \\
+So we have $X \sim B(n=12,p=\frac{2}{3})$, giving $E(X)=np = 12 \times \frac{2}{3} = 8$ (d).
+\end{solution}
+
+
+\question
+For $X$ in the previous question, $SD(X)$ is closest to
+\begin{parts}[5]
+                            \part 2.67
+                            \part 1.5
+                            \part 1.63
+                            \part 1.39
+                            \part 7.2
+\end{parts}
+\begin{solution}
+$X \sim B(n=12,p=\frac{2}{3})$, giving $SD(X)=\sqrt{Var(X)} = \sqrt{np(1-p)} = \sqrt{12 \times \frac{2}{3} \times \frac{1}{3}}  \approx 1.63$ (c).
+\end{solution}
+
+
+\question
+If $X \sim B(12,0.8)$, then using Binomial tables, $P(X=6)$ is 
+\begin{parts}[5]
+                            \part 0.0194
+                            \part 0.9845
+                            \part 0.0155 
+                            \part 0.0039
+                            \part 0.0010
+\end{parts}
+\begin{solution}
+$P(X=6) = P(X \geq 6) - P(X \leq 5) = 0.0194 - 0.0039 = 0.0155$ (c).
+\end{solution}
+
+
+\question
+If$X$ has mean 5 and variance 25, then if $Y=3X-4$, what is $Var(Y) + 2E(Y)$?
+\begin{parts}[5]
+                            \part 269
+                            \part 247
+                            \part 93 
+                            \part 154
+                            \part none of the above
+\end{parts}
+\begin{solution}
+Given: $E(X)=5$ and $Var(X)=25$. \\
+$E(Y) = E(3X-4) = 3E(X)-4 = 3 \times  5 - 4 = 11$. \\
+$Var(Y) = Var(3X-4) = 3^2 E(X) = 9 \times  25  = 225$. \\
+Hence $Var(Y) + 2E(Y) = 225 + 2 \times 11 = 247$ (b).
+\end{solution}
+
+
+\question
+If $X \sim B(10,0.3)$, then $P(X \geq 5)$ is closest to
+\begin{parts}[5]
+                            \part 0.0493
+                            \part 0.3669
+                            \part 0.8497 
+                            \part 0.9527
+                            \part 0.1503
+\end{parts}
+\begin{solution}
+$P(X \geq 5) = 1- P(X \leq 4) =  0.1503$ (using Binomial tables), giving answer (e).
+\end{solution}
+
+
+\question
+If $Y \sim B(11,0.3)$, then $P(|Y-5| \geq 3)$ is closest to
+\begin{parts}[5]
+                            \part 0.3170
+                            \part 0.0059
+                            \part 0.0086 
+                            \part 0.0043
+                            \part 0.3127
+\end{parts}
+\begin{solution}
+Given: $\{ |x \geq a| \}  = \{ x \geq a \} \cup \{ x \leq -a \}$. \\
+$P(|Y-5| \geq 3) = P(Y-5 \geq 3) + P(Y-5 \leq -3) = P(Y \geq 8) + P(Y \leq 2) = 1-P(X \leq 7) + P(Y \leq 2) = 1 - 0.9957 + 0.3127 = 0.317$ (using Binomial table twice), giving answer (a).
+\end{solution}
+
+
+
+\question
+If $Z \sim N(0,1)$, then $P(Z > 2)$ is closest to
+\begin{parts}[5]
+                            \part 0.9772
+                            \part 0.1587
+                            \part 0.5793 
+                            \part 0.9861
+                            \part 0.0228
+\end{parts}
+\begin{solution}
+$P(Z > 2) = 1-\Phi(2) = 0.0228$ (using Normal table), giving (e).
+\end{solution}
+
+\question
+If $X \sim N(5,16)$, then $P(X \geq 10)$ is closest to
+\begin{parts}[5]
+                            \part 0.1057
+                            \part 0.8944
+                            \part 0.6227
+                            \part 0.3773
+                            \part 0.9772
+\end{parts}
+\begin{solution}
+Using standardising and the Normal tables: \\
+$P(X \geq 10) = P( \frac{X-5}{4} \geq  \frac{10-5}{4}) = P(Z \geq 1.25) = 1- \Phi(1.25) = 1-0.8943 = 0.1057$ (a).
+\end{solution}
+
+
+
+\question
+If $Y \sim N(5,9)$, then $P(|Y-5| \geq 6)$ is closest to
+\begin{parts}[5]
+                            \part 0.3694
+                            \part 0.0456
+                            \part 0.2611
+                            \part 0.0885
+                            \part 0.9115
+\end{parts}
+\begin{solution}
+Using standardising and the Normal tables: \\
+$P(|Y-5| \geq 6) = P( \frac{|Y-5|}{3} \geq \frac{6}{3}) = P( |\frac{Y-5}{3}| \geq 2) = P(|Z| \geq 2) = 2 \times P(Z \geq 2) = 2 \times (1 - \Phi(2) ) = 2 \times (1-0.9772) = 0.0456$ (b).
+\end{solution}
+
+
+
+\question
+Suppose that $\bar{X}$ is the average of a random sample of size 16 from a $N(12,5^2)$ population. $P(\bar{X} \geq 15)$ is closest to
+\begin{parts}[5]
+                            \part 0.0082
+                            \part 0.7258
+                            \part 0.9918
+                            \part 0.2742
+                            \part 0.0164
+\end{parts}
+\begin{solution}
+Sample Mean: $\bar{X} \sim N(\mu, \frac{\sigma^2}{n}) = N(12, \frac{5^2}{16}) = N(12, (\frac {5}{4})^2)$. \\
+$P(\bar{X} \geq 15)  = P( \frac{\bar{X}-12}{5/4} \geq \frac{15-12}{5/4}) = 
+P(Z \geq 12/5) = 1 - \Phi(2.4) = 1-0.9918 = 0.0082$ (a).
+\end{solution}
+
+
+
+\question
+When rolling a fair 6-sided die, the number showing is a random number $X$ with $E(X)=3.5$ and $Var(X)=35/12$. The sum of three independent rolls od such a die is then a random variable who expected value and standard deviation are, respectively are:
+\begin{parts}[3]
+                            \part 21/2 and $\sqrt{35/12}$
+                            \part 10.5 and $\sqrt{35}/2$
+                            \part 9.5 and $\sqrt{3 \times 35/12}$
+                            \part $3 \times 3.5$ and $3 \times 35/12$
+                            \part 9.5 and $3 \sqrt{35/12}$
+\end{parts}
+\begin{solution}
+Given: 3 independent variables $X_{1}, X_{2}, X_{3}$, where $X_{i} \sim (3.5, 35/12)$, for $i=1,2,3$.  \\
+Sample Total: $\sum_{i=1}^{3} X_{i} \sim (3 \times 3.5, 3 \times 35/12)$. \\ 
+Hence the expected value and standard deviation are $3 \times 3.5$ and  $\sqrt{3 \times 35/12}$ which is $3 \times 3.5$ and  $\sqrt{35}/2$ (b).
+\end{solution}
+
+
+
+\question
+If $S$ denotes the sample total of a random sample of size 25 from a population with expectation 10 and variance 9 then the expectation and variance of $S$ are, respectively,
+\begin{parts}[3]
+                            \part 10 and 9
+                            \part 10 and 9/25
+                            \part 250 and 225
+                            \part 250 and 75
+                            \part 10 and 3/5
+\end{parts}
+\begin{solution}
+Given: 25 independent variables $X_{1}, X_{2}, \ldots X_{25}$, where $X_{i} \sim (10,9)$, for $i=1,2,\ldots,25$.  \\
+Sample Total: $\sum_{i=1}^{25} X_{i} \sim (25 \times 10, 25 \times 9) = (250,225)$ (c).
+\end{solution}
+
+
+
+\question
+Suppose that weights (in kg) of people in a certain population have mean 70 and standard deviation 10kg. Suppose also that a passenger vehicle that can seat 40 such people can safely take 3000kg. According to the Central Limit Theorem, when carrying 40 passengers what is the probability, to 4 decimal places, that the total weight exceeds 3000kg?
+\begin{parts}[5]
+                            \part 0.0014
+                            \part 0.0083
+                            \part 0
+                            \part 0.0100
+                            \part 0.0209
+\end{parts}
+\begin{solution}
+Given: 40 independent people with weights $X_{1}, X_{2}, \ldots X_{40}$, where $X_{i} \sim (70,10^2)$, for $i=1,2,\ldots,40$.  \\
+Total Weight: $\sum_{i=1}^{40} X_{i} \sim (40 \times 70, 40 \times 10^2) = (2800,4000)$. \\
+According to the CLT, $\sum_{i=1}^{40} X_{i} \sim N(2800,4000)$ (approximately). \\
+Hence
+\[ P(\sum_{i=1}^{40} X_{i} \geq 3000) = P( \frac{ \sum_{i=1}^{40} X_{i} - 2800}{\sqrt{4000}} \geq \frac{3000-2800}{\sqrt{4000}}) = P(Z \geq 3.162278) = 1-\Phi(3.162278) \approx 0.0014 \]
+which is answer (a). \\
+
+Note: use the closest value on the Normal table.
+\end{solution}
+
+
+
+
+\question
+If $X$ is an integer-valued random variable that has $E(X) = 10.5$, $Var(X) = 35/12$ then a normal
+approximation with continuity correction to $P(X > 12)$ is closest to
+\begin{parts}[5]
+                            \part 0.3859
+                            \part 0.2776
+                            \part 0.1894
+                            \part 0.1210
+                            \part 0.0721
+\end{parts}
+\begin{solution}
+Given: $X \sim (10.5,35/12)$. \\
+Using the CLT, we have an apprximating Normal, $Y \sim N(10.5,35/12)$. \\
+Hence, using continuity correction, \\
+\[ P(X > 12) \approx P(Y \geq 12.5) = P(\frac{Y-10.5}{\sqrt{35/12}} \geq \frac{12.5-10.5}{\sqrt{35/12}}) =
+P(Z \geq 1.17108) = 1-\Phi(1.17108) = 1-0.8790 = 0.121 \]
+giving answer (d).
+\end{solution}
+
+
+
+
+\vspace{1cm}
+\hspace{-1cm}
+\fbox{Proportion Test}
+
+ \question 
+In testing the hypothesis that $X\sim B(12,.5)$ using large values of $X$ as
+evidence, an observed value of $x=10$ gives a  $p$-value of
+\begin{parts}[5]
+\part 0.9807
+\part 0.0386
+\part 0.0193
+\part 0.0730
+\part 0.9270
+\end{parts}
+
+\begin{solution}
+This is equivalent to a one-sided hypothesis test.
+When the null hypothesis is true, $X\sim B(12,0.5)$. Thus the $p$-value is
+\[  P(X\geq 10) = 1-P(X\leq 9) \approx 1-0.9807 =0.0193    \;\;\; \text{(using tables)} \;\;\;  (c)\]
+\end{solution}
+
+
+\question 
+In testing the hypothesis that $X\sim B(12,.5)$ using large values of $|X-6|$ as
+evidence, an observed value of $x=10$ gives a  $p$-value of
+\begin{parts}[5]
+\part 0.9807
+\part 0.0386
+\part 0.0193
+\part 0.0730
+\part 0.9270
+\end{parts}
+
+\begin{solution}
+Note that 'using large values of $|X-6|$' is equivalent to a two-sided hypothesis test: ie both large and small values of 
+$|X-6|$ will give evidence against $H_0$. Note also that $|X-6|$ is the test statistic required for a non-symmetric Binomial (where $E(X) = np = 6$). However, commonly $p=0.5$ (which gives a symmetric Binomial) and hence we need only consider the test statistic as $X$.  \\
+
+When the null hypothesis is true, $X\sim B(12,0.5)$. Thus the $p$-value is
+\[  2 \times P(X\geq 10) = 2 \times P(X\leq 2)  = 2 \times 0.0193 =  0.0386   \;\;\; \text{(using tables)} \;\;\;  (b)\]
+\end{solution}
+
+
+\question 
+Suppose that we need to test the hypotheses $H_0 : p = 0.8
+ \;\; \mbox{against} \;\;  H_1 : p > 0.8$, where $p$ is the probability of success in the binomial model. Based on $n =10$, the number of 'successes' is 8.   This
+indicates that:
+\begin{parts}
+\part $p$-value is 0.32 and we have strong evidence against
+$H_0$.
+\part $p$-value is 0.68 and the data is consistent with
+$H_0$.
+\part $p$-value is 0.32 and the data is consistent with $H_0$.
+\part $p$-value is 0.68 and we have strong evidence against
+$H_0$.
+\end{parts}
+
+\begin{solution}
+\fbox{H} Define $X \sim B(10,p)$ where we want to test $H_0: p=0.8$ versus $H_1: p>0.8$. \\
+\fbox{T} Under $H_0$, $X \sim B(10,0.8)$. \\
+\fbox{P} Since the observation is $x=8$, the $p$-value is
+\[ P(X \geq 8)=1-P(X\leq 7) \approx  1-0.3222 = 0.6778 \;\; \text{ (using tables)} \;\; \]
+
+Given the $p$-value is large, we say 'the data are consistent with $H_0$ (b).
+\end{solution}
+
+
+\question 
+A random variable $X\sim B(12,p)$ is observed to take the value 8. If this is used to test
+$H_0\colon p=0.7$ against $H_1\colon p>0.7$, the $p$-value is closest
+to
+      \begin{parts}[5]
+        \part 0.25
+        \part 0.72 %\correct
+        \part 0.81
+        \part 0.49
+        \part 0.09
+      \end{parts}
+
+
+\begin{solution}
+\fbox{T} Let $X \sim B(12,p)$. Under $H_1$, $X$ tends to take larger values than under $H_0$. Thus we use larger values of $X$ as more evidence against $H_0$.  
+
+\fbox{P}
+Hence the $p$-value is the probability, under $H_{0}$, of at least as much evidence (against $H_0$) as the observation $x=8$.
+
+\[ p\mbox{-value} = P(X \geq 8)  = 1-P(X\leq 7) \approx 1-0.2763 = 0.7237 \;\;  \text{ (using tables)} \;\; (b) \]
+\end{solution}
+
+
+\question
+The $p$-value for testing the hypothesis that $X \sim B(10,0.5)$ for a 2 sided alternative hypothesis, with an observation of 8, is 
+
+\begin{parts}[5]
+        \part 0.0547
+        \part 0.1094
+        \part 0.9893
+        \part 0.0107
+        \part 0.0214
+      \end{parts}
+\begin{solution}
+\fbox{H} $H_0: p=0.5$ vs $H_1: p \neq 0.5$. \\
+
+\fbox{T} $X \sim B(10,0.5)$, under $H_0$. \\
+
+\fbox{P}
+\[ p\mbox{-value} = 2 \times P(X \geq 8)  = 2(1-P(X \leq 7)) =2(1-0.9453) = 0.1094 \]
+which is (b).
+\end{solution}
+
+\question
+The standard medication for a certain ailment is known to give relief to 60\% of sufferers. A new drug has been developed which is claimed to be better than the standard medication. A random sample of 50 patients is given the new drug and 35 of them obtain relief. A $p$-value for the test of $H_0$:“the new drug is the same as the standard” versus $H_1$:“the new drug is better than the standard” is, using a normal approximation with continuity correction, closest to
+\begin{parts}[5]
+        \part 0.0329
+        \part 0.0968
+        \part 0.0262
+        \part 0.1241
+        \part 0.0745
+      \end{parts}
+
+\begin{solution}
+\fbox{H} $H_0: p=0.6$ vs $H_1: p > 0.6$. \\
+
+\fbox{T} $X \sim B(50,0.6)$, under $H_0$. \\
+
+\fbox{P}
+The $p$-value is $P(X \geq 35)$, which we can't look up on Binomial table. \\
+
+Hence, the approximating normal is $Y \sim N(np,np(1-p)) = N(50 \times 0.6, 50 \times 0.6 \times 0.4) = N(30,12)$.
+Hence, using continuity correction, the $p$-value is  $P(X \geq 35)  \approx P(Y \geq 34.5)$. \\
+Now standardising, \\
+\[ P( \frac{Y-30}{\sqrt{12}} \geq  \frac{34.5-30}{\sqrt{12}}) = P(Z \geq 1.299038) = 1- \Phi(1.299038) = 1- 0.9032 =  0.0968 \]
+which is (b).
+\end{solution}
+
+
+\question
+The number of heads in 12 flips of a coin is modelled as a random variable $X \sim B(12,p)$ for some $0 < p < 1$. If $X$ takes the value 2, then the $p$-value for testing $H_0 : p = 0.5$ versus $H_1 : p < 0.5$ is closest to
+\begin{parts}[5]
+        \part 0.0032
+        \part 0.0064
+        \part 0.0193
+        \part 0.0386
+        \part 0.1938
+      \end{parts}
+\begin{solution}
+\fbox{H} $H_0: p=0.5$ vs $H_1: p < 0.5$. \\
+
+\fbox{T} $X \sim B(12,0.5)$, under $H_0$, with $x_{obs} = 2$. \\
+
+\fbox{P}
+The $p$-value is $P(X \leq 2) = 0.0193$ (c).
+\end{solution}
+
+
+\vspace{1cm}
+\hspace{-1cm}
+\fbox{Sign Test}
+
+\question  
+ 14 students each taste-tested two different brands of drink
+(brand $X$ and brand $Y$) but the brands were hidden from them. The
+object of the exercise was to see if students preferred one brand
+over the other, but there was no indication of which this might be
+before the test. In all, 8 subjects preferred brand $X$, 4 preferred
+brand $Y$ and 2 had no preference either way. Using a sign test (removing ties), the $p$-value is closest to
+      \begin{parts}[5]
+        \part 0.25
+        \part 0.39
+        \part 0.02
+        \part 0.19
+        \part 0.01
+      \end{parts}
+
+\begin{solution}
+\fbox{Preparation}  We have 14 students, but we need to discard the 2 `ties' (zeroes), so $n=12$. \\
+Let $T=$ number \ preferring brand $X$, where $T \sim B(12,p)$  \\
+
+\fbox{H}  $H_0\colon p=0.5$ (no preference) versus $H_1\colon p \neq 0.5$ \\
+
+\fbox{T}  Under $H_0$, $T  \sim B(12,0.5)$. The observed value of $T$ is $t_{obs}=8$.  \\
+
+\fbox{P} Thus the $p$-value is 
+\[ 2 \times P(T \geq 8)  = 2P(T \leq 4) \ \text{ (by symmetry)} = 2 \times 0.1938 \ \text{ (tables)} = 0.3876 \;\;\; (b) \]
+\end{solution}
+
+\question
+Fifteen test subjects are asked if they prefer brand A, brand B, or have no preference. Nine prefer brand A, 3 prefer brand B and 3 have no preference. The P-value for a sign-test of no difference between brands is closest to
+\begin{parts}[5]
+        \part 0.0386
+        \part 0.1460
+        \part 0.0730
+        \part 0.0193
+        \part 0.1758
+      \end{parts}
+
+\begin{solution}
+\fbox{Preparation}  We have 15 subjects, but we need to discard the 3 `ties' (no preference, zeroes), so $n=12$. \\
+Let $T=$ number preferring brand $X$, where $T \sim B(12,p)$  \\
+
+\fbox{H}  $H_0\colon p=0.5$ (no preference) versus $H_1\colon p \neq 0.5$ \\
+
+\fbox{T}  Under $H_0$, $T  \sim B(12,0.5)$. The observed value of $T$ is $t_{obs}=9$.  \\
+
+\fbox{P} Thus the $p$-value is 
+\[ 2 \times P(T \geq 9)  = 2P(T \leq 3) \ \text{ (by symmetry)} = 2 \times 0.0730 \ \text{ (tables)} = 0.146 \;\;\; (b). \]
+\end{solution}
+
+
+
+\vspace{1cm}
+\hspace{-1cm}
+\fbox{I Sample Z Test}
+
+\question  
+A random sample of size 25 from a $N(\mu,9)$ population yields a sample mean of 21. To test $H_0\colon\mu=20$,
+$H_1\colon\mu>20$ an expression for the $p$-value is
+      \begin{parts}[5]
+        \part $\Phi(5/2)$
+        \part $\Phi(-0.1)$
+        \part $P(t_9>0.9)$
+        \part $1-\Phi(5/3)$
+        \part none of these
+      \end{parts}
+
+\begin{solution}
+\fbox{Preparation}  We have $\bar{X}  \sim N(\mu, 9/25)= N(\mu, (3/5)^2)$.  \\
+
+\fbox{H}  $H_0: \mu=20$ (no preference) vs $H_1: \mu > 20$ \\
+
+\fbox{T}  Under $H_0$, $\bar{X}  \sim N(20, (3/5)^2)$. 
+The observed value of $\bar{X}$ is $\bar{x}=21$. \\
+
+\fbox{P} Thus the $p$-value is 
+\[  P(\bar{X} \geq 21)  = P( \frac{\bar{X}  - 20}{3/5}  \geq \frac{21-20}{3/5})= P(Z \geq 5/3) = 1-\Phi(5/3) \;\;  (d) \]
+
+\vspace{1cm}
+OR Using the standardised version of test statistic: \\
+
+
+\fbox{H}  $H_0: \mu=20$  vs $H_1: \mu > 20$ \\
+
+\fbox{T}  Under $H_0$, $\bar{X}  \sim N(20, (3/5)^2)$, or standardising 
+$\frac{ \bar{X} - 20}{3/5} \sim N(0,1) = Z$. 
+As $\bar{x}=21$, the observed value of  $Z$ is $z_{obs} = \frac{ 21 - 20}{3/5} = 5/3$.  \\
+
+\fbox{P} Thus the $p$-value is 
+\[ P(Z \geq 5/3) = 1-\Phi(5/3)  \]
+\end{solution}
+
+
+
+\question 
+A random sample of size 64 from a $N(\mu,16)$ population
+yields a sample mean of 19.1. To test $H_0\colon\mu=20$ against
+$H_1\colon\mu<20$ an expression for the p-value is
+      \begin{parts}[5]
+        \part $1-\Phi(1.8)$
+        \part $\Phi(-0.1)$
+        \part $2[1-\Phi(0.9)]$
+        \part $\Phi(9/5)$
+        \part $2\Phi(-1.8)$
+      \end{parts}
+
+\begin{solution}
+\fbox{Preparation}  We have $\bar{X}  \sim N(\mu, 16/64)= N(\mu, (.5)^2)$.  \\
+
+\fbox{H}  $H_0: \mu=20$ (no preference) vs $H_1: \mu < 20$ \\
+
+\fbox{T}  Under $H_0$, $\bar{X}  \sim N(20, (.5)^2)$. 
+The observed value of $\bar{X}$ is $\bar{x}=19.1$. \\
+
+\fbox{P} Thus the $p$-value is 
+\[  P(\bar{X} \leq 19.1)  = P( \frac{\bar{X}  - 20}{0.5} \leq \frac{19.1-20}{0.5} )= P(Z \leq -1.8 ) = 1-\Phi(1.8)  = 1-0.9641 = 0.0359\;\;  (a) \]
+
+\vspace{1cm}
+OR Using the standardised version of test statistic: \\
+
+
+\fbox{H}  $H_0: \mu=20$  vs $H_1: \mu > 20$ \\
+
+\fbox{T}  Under $H_0$, $\bar{X}  \sim N(20, (.5)^2)$, or standardising 
+$\frac{ \bar{X} - 20}{.5} \sim N(0,1) = Z$. 
+As $\bar{x}=19.1$, the observed value of  $Z$ is $z_{obs} = \frac{ 19.1 - 20}{0.5} = -1.8$.  \\
+
+\fbox{P} Thus the $p$-value is 
+\[ P(Z \leq 1.8) = 0.0359 \]
+\end{solution}
+
+
+\question  
+Suppose that we need to test the hypotheses $H_0 : \mu = 8
+\;\; \mbox{against} \;\; H_1 : \mu > 8$. Based on $n \ (n>25)$ observations and using  $z ={{\bar x - 8} \over {\sigma/\sqrt{n}}}$
+($\sigma$ is known), the corresponding value of $z$ is 1.78 . \  This
+indicates that the 
+\begin{parts}
+\part p-value is 0.9625 and we have strong evidence against
+$H_0$ .
+\part p-value is 0.9625 and the data are consistent with $H_0$ .
+\part p-value is 0.0375 and we have evidence against
+$H_0$ .
+\part p-value is 0.0375 and the data is consistent with $H_0$
+%\part none of these
+\end{parts}
+
+\begin{solution}
+\fbox{T}
+Since the alternative hypothesis is $\mu>8$, larger values of the $Z$-statistic indicate more evidence (against $H_0\colon \mu=8$).  \\
+
+\fbox{P} Hence the $p$-value is
+ \[ P(Z \geq 1.78) = 1- \Phi(1.78) = 1-0.9625 = 0.0375 \;\; \]
+
+\fbox{C}
+As the $p$-value is small (cf $\alpha =0.05$), we would conclude that there is evidence against $H_0$. (c)
+\end{solution}
+
+
+\question
+Measurement errors on an electric balance are normally distributed with a known standard deviaiton of 0.005 grams and an unknown mean $\mu$. If $\mu =0$ then the balance is working properly, otherwise it needs to be repaired. A standard object whose weight is known exactly is measured 25 times. The measurement errors average out to -0.00175. The $p$-value for testing $H_0$: `balance is working properly' versus $H_1:$ `balance needs repairs' is closest to
+
+ \begin{parts}[4]
+        \part 0.04
+        \part 0.08
+        \part 0.36
+        \part 0.72
+        \part 0.64
+ \end{parts} 
+\begin{solution}
+\fbox{H} $H_0$: $\mu=0$ vs $H_1$: $\mu \neq 0$. \\
+
+\fbox{T} The test statistic is $\bar{X} \sim N( \mu,\frac{0.005^2}{25} ) = N(\mu,0.001^2)$, with observed value $\bar{x} =-0.00175$.   \\
+
+\fbox{P}
+The $p$-value is
+\[ 2P(\bar{X} \leq -0.00175) = 2P( \frac{\bar{X}-0}{0.001} \leq  \frac{0.00175-0}{0.001} ) = 2P(Z \leq 1.75) = 2(1- \Phi(1.75)) = 2(1- 0.9599) = 0.0802 \;\; (b) \]
+\end{solution}
+
+
+
+\vspace{1cm}
+\hspace{-1cm}
+\fbox{1 Sample t Test} 
+
+\question 
+ A random sample of size 25 from a $N(\mu,\sigma^2)$ population with unknown variance
+yields a sample mean of 21 and sample variance 9. To test
+$H_0\colon\mu=20$, $H_1\colon\mu>20$ an expression for the p-value
+is
+      \begin{parts}[4]
+        \part $P(t_{25}>5/3)$
+        \part $1-\Phi(5/3)$
+        \part $2P(t_{24}>5/3)$
+        \part $P(t_{24}>5/3)$
+      \end{parts} 
+
+
+\begin{solution}
+\fbox{T}  The test statistic is $T=\frac{\bar X-20}{\sqrt 9/\sqrt{25}}\sim t_{24}$, when $H_0$ is true. \\
+The observed value of the test statistic is $t_{obs} = \frac{21-20}{3/5} = 5/3$. \\
+
+\fbox{P} Larger values of $T$ are more evidence against $H_0$, hence the $p$-value is
+\[ P(T \geq 5/3) = P( t_{24} > 5/3) \;\; (d) \]
+\end{solution} 
+
+\vspace{1cm}
+\hspace{-1cm}
+\fbox{2 Sample t Test} 
+
+
+\question  
+ When performing a two-sample $t$-test, if one sample has size $13$
+and sample sd $4.1$, while the other has size $7$ and sample sd $5.7$, the pooled
+estimate of the unknown common population sd is closest to
+      \begin{parts}[5]
+        \part $10.06$
+        \part $4.69$ 
+       \part $13.64$
+       \part $3.15$
+       \part $22.04$
+     \end{parts}
+
+
+
+\begin{solution}
+Given: $n_{x}=13, s_{x}=4.1, n_{y}=7, s_{y}=5.7$. \\
+Pooled Standard Deviation: $s_{p} = \sqrt{ \frac{ 12 \times 4.1^2 + 6 \times 5.7^2 }{18}} = 4.69$ (b).
+\end{solution}
+
+
+
+
+\question
+Two samples have been taken from two
+independent normal populations with equal variances. From these
+samples ($n_x = 12, n_y = 15$) we calculate $\bar x=119.4$, $\bar
+y=112.7$, $s_x=9.2$, $s_y=11.1$. For the test $H_0:\mu_x=\mu_y$
+against $H_1: \mu_x \not= \mu_y$, the p-value is included in
+    \begin{parts}[5]
+        \part (0.05,0.1)
+        \part (0.1,0.2)
+        \part (0.25,0.5)
+        \part (0.001,0.005)
+        \part none of these
+    \end{parts}
+
+\begin{solution}
+Given: $n_{x}=12, \bar{x} = 119.4, s_{x}=9.2, n_{y}=15, \bar{y} = 112.7, s_{y}=11.1$. \\
+Pooled Standard Deviation: $s_{p} = \sqrt{ \frac{ 11 \times 9.2^2 + 14 \times 11.1^2 }{25}} = 10.30724$. \\
+\fbox{T} Observed value of test statistic: $\tau_{obs} =  \frac{ 119.4-112.7 - 0 }{s_{p} \sqrt{1/12 + 1/15}} = 1.678366$. \\
+
+\fbox{P} P-value: $2 P( t_{25} \geq \tau_{obs}) = 2 P( t_{25} \geq 1.678366 ) \;\; \epsilon \; (0.1,0.2)$ (b).\\
+
+Check:
+\begin{verbatim}
+> 2*(1-pt(1.68,18))
+[1] 0.1102295
+\end{verbatim}
+
+
+\end{solution}
+
+
+\vspace{1cm}
+\hspace{-1cm}
+\fbox{Goodness of Fit Test}
+
+\question 
+  The following table gives the observed frequencies of genotypes A, B, and C
+  of 100 plants:
+   \begin{center}
+      \begin{tabular}{|r|ccc|c|}\hline
+      Genotype&A&B&C&Total\\ \hline
+      Observed frequency, $O_i$&18&55&27&100\\\hline
+      \end{tabular}
+  \end{center}
+
+ Under the null hypothesis that A, B, and C are in the ratio of 1:2:1, the expected frequencies, $E_i$'s (respectively) are:
+\begin{parts}[5]
+\part 25, 25, 75
+\part 25, 25, 50
+\part 50, 25, 25
+\part 25, 50, 25
+\part none of these.
+\end{parts}
+
+
+\begin{solution}
+$O_{1} = O_{3} = 1/(1+2+1) \times 100 = 25$; $O_{2} = 2/(1+2+1) \times 100 = 50$. (d)
+\end{solution}
+
+
+
+\question
+The observed value $\tau_{\text{obs}}$ of the statistic $\tau = \sum \frac{(O_i -
+E_i)^2}{E_i} = \sum \frac{O_{i}^2}{E_i} - n $ \  for the data in Q50
+is:
+\begin{parts}[5]
+\part $\tau_{\text{obs}} = 2.62$
+\part $\tau_{\text{obs}} = 102.62$
+\part $\tau_{\text{obs}} =100$
+\part $\tau_{\text{obs}} = 0.262$
+\part $\tau_{\text{obs}} = 1.62$
+\end{parts}
+
+\begin{solution}
+\fbox{T} $\tau_{obs} = \frac{18^2}{25} + \frac{55^2}{50} + \frac{27^2}{25} = 2.62$. (a)
+\end{solution}
+
+
+
+
+\question 
+100 observations are made on a random variable only taking values 0,
+1, 2 and 3. The frequencies are shown below:
+\begin{center}
+\begin{tabular}[ ]{|l||c|c|c|c|}\hline
+%Value & 0 & 1 & 2 & 3\\\hline Frequency & 20 & 40 & 30 & 10\\\hline
+Value & 0 & 1 & 2 & 3\\\hline Frequency & 22 & 38 & 32 & 8\\\hline
+\end{tabular}
+\end{center}
+A goodness of fit test is applied to see if these frequencies are
+well-described by $\mathcal B(3,0.5)$ probabilities. The $\chi^2$
+goodness-of-fit statistic is 9.653. The corresponding p-value is
+somewhere in the interval %(refer to lecture notes, RK)
+      \begin{parts}[5]
+        \part (0.1,0.9)
+        \part (0.9,0.95)
+        \part (0.01,0.025)
+        \part (0.05,0.1)%\correct
+        \part (0.025,0.05)
+      \end{parts}
+
+
+\begin{solution}
+
+\begin{center}
+\begin{tabular}[ ]{|l||c|c|c|c|}\hline
+Value  & 0 & 1 & 2 & 3\\\hline 
+Observed Frequency $O_{i}$ & 22 & 38 & 32 & 8\\\hline
+Expected Frequency $E_{i}$ & 12.5 & 37.5 & 37.5 & 12.5 \\\hline
+\end{tabular}
+\end{center}
+
+where \\
+$E_{0} = P( X =0 ) = {3 \choose 0} (0.5)^0 (0.5)^3  \times 100 = 12.5 = E_{3}$ (by symmetry). \\
+
+$E_{1} = P( X =1 ) = {3 \choose 1} (0.5)^1 (0.5)^2  \times 100 = 37.5 = E_{2}$ (by symmetry). \\
+
+\fbox{T}
+$\tau_{obs} = \frac{22^2}{12.5} + \frac{38^2}{37.5} + \frac{32^2}{37.5}  + \frac{8^2}{12.5}= 9.653$. 
+
+\fbox{P}
+$P-value = P( \chi^2_{3} \geq 9.653 ) \;\; \epsilon \; (0.01,0.025)$ (c).
+
+
+\end{solution}
+
+
+
+
+
+\end{questions}
+\end{tutorial}
+\end{document}
+
+
+
